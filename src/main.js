@@ -340,7 +340,8 @@ if (pCanvas) {
    HERO ANIMATIONS
    =========================== */
 function animateHero() {
-  document.body.style.overflow = ''; // Re-enable scrolling after preloader
+  document.body.style.overflowY = 'auto';
+  document.body.style.overflowX = 'hidden';
   const heroTl = gsap.timeline()
   heroTl
     .to('.line-inner', { y: 0, duration: 1.2, stagger: 0.12, ease: 'power4.out' })
