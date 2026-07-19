@@ -512,6 +512,19 @@ const contactForm = document.getElementById('contactForm')
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault()
+    
+    // Mailto logic
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('service').value || 'Not specified';
+    const message = document.getElementById('message').value;
+    
+    const subject = encodeURIComponent(`New Project Inquiry from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`);
+    
+    window.location.href = `mailto:automationlumi@gmail.com?subject=${subject}&body=${body}`;
+    
+    // UI Feedback
     const btn = contactForm.querySelector('.btn-submit span')
     btn.textContent = 'Message Sent! ✓'
     gsap.from(btn, { scale: 0.8, duration: 0.4, ease: 'back.out(2)' })
